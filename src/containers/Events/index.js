@@ -7,8 +7,6 @@ import ModalEvent from "../ModalEvent";
 
 import "./style.css";
 
-
-
 const EventList = () => {
   const { data, error } = useData();
   const [type, setType] = useState();
@@ -26,15 +24,9 @@ const EventList = () => {
   const pageNumber = Math.ceil((data?.events?.length || 0) / eventsPerPage);
   const typeList = new Set(data?.events?.map((event) => event.type));
       
-
-
-
-  
    // console.log("API :", data);
    // console.log("Filtered Events:", filteredEvents);
   
-
-
   const changeType = (evtType) => {
     setCurrentPage(1);
     setType(evtType);
@@ -50,12 +42,10 @@ const EventList = () => {
     }
   }, [data]);
 
- 
-
   return (
     <>
       {error && <div>An error occured</div>}
-      {data === null ? (
+      {!filteredEvents || !filteredEvents.length  ? (
         "loading"
       ) : (
         <>
