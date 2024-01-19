@@ -21,7 +21,7 @@ const EventList = () => {
     ? data?.events?.slice(startIndex, endIndex)
     : data?.events?.filter((event) => event.type === type)?.slice(startIndex, endIndex);
 
-  const pageNumber = Math.ceil((data?.events?.length || 0) / eventsPerPage);
+    const pageNumber = Math.ceil((data?.events?.filter((event) => !type || event.type === type)?.length || 0) / eventsPerPage);
   const typeList = new Set(data?.events?.map((event) => event.type));
       
    // console.log("API :", data);
